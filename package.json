@@ -1,6 +1,6 @@
 {
     "name": "beermate-web",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "",
     "main": "js/app.js",
     "dependencies": {
@@ -27,8 +27,7 @@
     },
     "scripts": {
         "build-scss": "compass compile",
-        "build": "webpack --config webpack.prod.config.js",
-        "build-dev": "webpack --config webpack.config.js",
+        "build": "webpack --config webpack.config.js",
         "watch": "webpack --config webpack.config.js --watch",
         "watch-scss": "nodemon -e scss -w styles --exec \"npm run build-scss\"",
         "build-all": "npm run build && npm run build-scss"

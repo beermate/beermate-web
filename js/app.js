@@ -25256,7 +25256,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'section',
-	                    { 'class': 'intro' },
+	                    { className: 'intro' },
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
