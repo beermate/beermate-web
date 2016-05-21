@@ -1,12 +1,12 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 
-import AppContainer from './components/AppContainer/AppContainer.jsx';
+import Main from './components/Main.jsx';
 
 let routes = (
     <Router history={browserHistory}>
-        <Route path="/" component={AppContainer}/>
+        <Route path="/" component={Main}/>
     </Router>
 );
 
-export { routes };
+export {routes};

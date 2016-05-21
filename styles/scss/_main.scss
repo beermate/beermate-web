@@ -1,3 +1,77 @@
 body {
     background: $brown;
+    overflow: hidden;
+}
+
+body,
+main,
+#app {
+    position: relative;
+    height: 100vh;
+}
+
+.beer {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 90%;
+}
+
+.bubble {
+    position: absolute;
+    z-index: 1;
+    bottom: -50px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: -100px;
+    background: saddlebrown;
+    opacity: .8;
+    border-radius: 50%;
+    -webkit-animation: pulse 3s linear infinite;
+}
+
+.bubble--paused {
+    -webkit-animation-play-state: paused;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        width: 100px;
+        height: 100px;
+        bottom: -50px;
+        margin-left: -50px;
+        opacity: .6;
+    }
+    25% {
+        width: 250px;
+        height: 250px;
+        bottom: -125px;
+        margin-left: -125px;
+        opacity: .4;
+    }
+    50% {
+        width: 400px;
+        height: 400px;
+        bottom: -200px;
+        margin-left: -200px;
+        opacity: .2;
+    }
+    75% {
+        width: 250px;
+        height: 250px;
+        bottom: -125px;
+        margin-left: -125px;
+        opacity: .4;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        bottom: -50px;
+        margin-left: -50px;
+        opacity: .6;
+    }
 }

@@ -19685,16 +19685,16 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _AppContainer = __webpack_require__(221);
+	var _Main = __webpack_require__(221);
 
-	var _AppContainer2 = _interopRequireDefault(_AppContainer);
+	var _Main2 = _interopRequireDefault(_Main);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = _react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.browserHistory },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _AppContainer2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Main2.default })
 	);
 
 	exports.routes = routes;
@@ -25230,47 +25230,57 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var AppContainer = function (_React$Component) {
-	    _inherits(AppContainer, _React$Component);
+	var Main = function (_React$Component) {
+	    _inherits(Main, _React$Component);
 
-	    function AppContainer(props) {
-	        _classCallCheck(this, AppContainer);
+	    function Main(props) {
+	        _classCallCheck(this, Main);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(AppContainer).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
+
+	        _this.state = {
+	            isLoading: false
+	        };
+
+	        /*
+	        var websocket = new WebSocket('ws://echo.websocket.org');
+	         // When the connection is open, send some data to the server
+	        websocket.onopen = function () {
+	            websocket.send('Ping'); // Send the message 'Ping' to the server
+	        };
+	         // Log errors
+	        websocket.onerror = function (error) {
+	            console.log('WebSocket Error ' + error);
+	        };
+	         // Log messages from the server
+	        websocket.onmessage = function (e) {
+	            console.log('Server: ' + e.data);
+	        };
+	        */
+	        return _this;
 	    }
 
-	    _createClass(AppContainer, [{
+	    _createClass(Main, [{
 	        key: 'render',
 	        value: function render() {
+	            var bubbleClassName = 'bubble bubble--paused';
+	            if (!this.state.isLoading) {
+	                bubbleClassName = 'bubble';
+	            }
+
 	            return _react2.default.createElement(
 	                'main',
 	                null,
-	                _react2.default.createElement(
-	                    'header',
-	                    null,
-	                    _react2.default.createElement(
-	                        'h1',
-	                        null,
-	                        'Beermate'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'section',
-	                    { className: 'intro' },
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Never run out of beer!'
-	                    )
-	                )
+	                _react2.default.createElement('img', { className: 'beer', src: '/img/beer-1.svg' }),
+	                _react2.default.createElement('div', { className: bubbleClassName })
 	            );
 	        }
 	    }]);
 
-	    return AppContainer;
+	    return Main;
 	}(_react2.default.Component);
 
-	exports.default = AppContainer;
+	exports.default = Main;
 
 /***/ }
 /******/ ]);
