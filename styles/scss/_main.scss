@@ -27,9 +27,9 @@ main,
     left: 50%;
     width: 100px;
     height: 100px;
-    margin-left: -100px;
+    margin-left: -50px;
     background: saddlebrown;
-    opacity: .8;
+    opacity: .4;
     border-radius: 50%;
     -webkit-animation: pulse 3s linear infinite;
 }
@@ -40,38 +40,23 @@ main,
 
 @-webkit-keyframes pulse {
     0% {
-        width: 100px;
-        height: 100px;
-        bottom: -50px;
-        margin-left: -50px;
-        opacity: .6;
-    }
-    25% {
-        width: 250px;
-        height: 250px;
-        bottom: -125px;
-        margin-left: -125px;
+        @include pulseValues(100px);
         opacity: .4;
     }
+    25% {
+        @include pulseValues(300px);
+        opacity: .3;
+    }
     50% {
-        width: 400px;
-        height: 400px;
-        bottom: -200px;
-        margin-left: -200px;
+        @include pulseValues(500px);
         opacity: .2;
     }
     75% {
-        width: 250px;
-        height: 250px;
-        bottom: -125px;
-        margin-left: -125px;
-        opacity: .4;
+        @include pulseValues(700px);
+        opacity: .1;
     }
     100% {
-        width: 100px;
-        height: 100px;
-        bottom: -50px;
-        margin-left: -50px;
-        opacity: .6;
+        @include pulseValues(900px);
+        opacity: 0;
     }
 }

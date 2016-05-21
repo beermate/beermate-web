@@ -1,0 +1,6 @@
+@mixin pulseValues($width: 100px) {
+    width: $width;
+    height: $width;
+    bottom: -($width/2);
+    margin-left: -($width/2);
+}

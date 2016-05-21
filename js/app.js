@@ -25239,40 +25239,64 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 
 	        _this.state = {
-	            isLoading: false
+	            id: 1,
+	            level: 0.2,
+	            beer_on_mat: true
 	        };
 
-	        /*
-	        var websocket = new WebSocket('ws://echo.websocket.org');
-	         // When the connection is open, send some data to the server
-	        websocket.onopen = function () {
-	            websocket.send('Ping'); // Send the message 'Ping' to the server
-	        };
-	         // Log errors
-	        websocket.onerror = function (error) {
-	            console.log('WebSocket Error ' + error);
-	        };
-	         // Log messages from the server
-	        websocket.onmessage = function (e) {
-	            console.log('Server: ' + e.data);
-	        };
-	        */
+	        _this.handleWebSocket();
 	        return _this;
 	    }
 
 	    _createClass(Main, [{
-	        key: 'render',
-	        value: function render() {
-	            var bubbleClassName = 'bubble bubble--paused';
-	            if (!this.state.isLoading) {
-	                bubbleClassName = 'bubble';
+	        key: 'handleWebSocket',
+	        value: function handleWebSocket() {
+	            this.webSocket = new WebSocket('ws://echo.websocket.org');
+
+	            // ws://192.168.0.138:2794
+	            // http://192.168.0.138:3000/
+
+	            this.webSocket.onopen = function () {
+	                this.webSocket.send(JSON.stringify({
+	                    id: 1,
+	                    level: 0.4,
+	                    beer_on_mat: true
+	                }));
+	            }.bind(this);
+
+	            // Log messages from the server
+	            this.webSocket.onmessage = function (event) {
+	                this.setState(JSON.parse(event.data));
+	            }.bind(this);
+	        }
+	    }, {
+	        key: 'getBeerImage',
+	        value: function getBeerImage() {
+	            var image = '/img/beer-6.svg';
+	            var level = this.state.level;
+
+	            if (0 === level) {
+	                image = '/img/beer-1.svg';
+	            } else if (level < 0.25) {
+	                image = '/img/beer-2.svg';
+	            } else if (level < 0.5) {
+	                image = '/img/beer-3.svg';
+	            } else if (level < 0.75) {
+	                image = '/img/beer-4.svg';
+	            } else if (1 !== level && level > 0.75) {
+	                image = '/img/beer-5.svg';
 	            }
 
+	            return image;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
 	            return _react2.default.createElement(
 	                'main',
 	                null,
-	                _react2.default.createElement('img', { className: 'beer', src: '/img/beer-1.svg' }),
-	                _react2.default.createElement('div', { className: bubbleClassName })
+	                _react2.default.createElement('img', { className: 'beer', src: this.getBeerImage() }),
+	                _react2.default.createElement('div', { className: 'bubble' })
 	            );
 	        }
 	    }]);
